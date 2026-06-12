@@ -6,6 +6,8 @@
 - [x] Application icons created
 - [x] electron-updater installed (production dependency)
 - [x] Development mode detection via app.isPackaged
+- [x] QA:mac:unsigned script for private macOS testing
+- [x] release:mac script requires Apple credentials
 - [ ] Apple Developer Program membership active
 - [ ] Developer ID Application certificate installed
 - [ ] macOS arm64 build signed
