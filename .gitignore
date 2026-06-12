@@ -1,0 +1,12 @@
+node_modules
+
+# Release credentials
+*.p8
+*.p12
+*.cer
+*.mobileprovision
+.env.release
+.env.production.local
+
+# Packaged desktop builds
+apps/desktop/release/
