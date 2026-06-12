@@ -2,6 +2,10 @@
 
 ## Distribution
 
+- [x] Desktop packaging configuration complete
+- [x] Application icons created
+- [x] electron-updater installed (production dependency)
+- [x] Development mode detection via app.isPackaged
 - [ ] Apple Developer Program membership active
 - [ ] Developer ID Application certificate installed
 - [ ] macOS arm64 build signed
