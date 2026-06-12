@@ -10,4 +10,5 @@ node_modules
 
 # Packaged desktop builds
 apps/desktop/release/
+apps/desktop/build/icon.icns.tmp.png
 apps/desktop/release/
