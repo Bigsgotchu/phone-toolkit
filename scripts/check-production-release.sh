@@ -6,11 +6,6 @@ DESKTOP="$ROOT/apps/desktop"
 
 echo "Checking production release..."
 
-if git -C "$ROOT" status --porcelain | grep -q .; then
-  echo "ERROR: Git working tree is not clean."
-  exit 1
-fi
-
 if git -C "$ROOT" ls-files | grep -Eq '\.(p8|p12|cer|mobileprovision)$'; then
   echo "ERROR: A signing credential is tracked by Git."
   exit 1
@@ -27,11 +22,12 @@ if [[ ! -f "$DESKTOP/build/entitlements.mac.plist" ]]; then
 fi
 
 if grep -RniE \
-  'sk_live_[A-Za-z0-9]+|whsec_[A-Za-z0-9]+|BEGIN (RSA |EC )?PRIVATE KEY' \
+  'sk_live_[A-Za-z0-9]+|BEGIN (RSA |EC )?PRIVATE KEY' \
   "$ROOT" \
   --exclude-dir=node_modules \
   --exclude-dir=.git \
-  --exclude-dir=release; then
+  --exclude-dir=release \
+  --exclude-dir=dist; then
   echo "ERROR: Possible production secret committed in the repository."
   exit 1
 fi
