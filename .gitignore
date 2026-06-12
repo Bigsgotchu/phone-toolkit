@@ -10,3 +10,4 @@ node_modules
 
 # Packaged desktop builds
 apps/desktop/release/
+apps/desktop/release/
