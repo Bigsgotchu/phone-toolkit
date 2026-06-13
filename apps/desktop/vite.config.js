@@ -3,14 +3,21 @@ import react from '@vitejs/plugin-react'
 import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
 
-const configFile = fileURLToPath(import.meta.url)
-const appRoot = dirname(configFile)
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 export default defineConfig({
-  root: appRoot,
+  root: __dirname,
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src'),
+    },
+  },
   plugins: [react()],
   build: {
-    outDir: resolve(appRoot, 'dist/renderer'),
-    emptyOutDir: false,
+    outDir: resolve(__dirname, 'dist', 'renderer'),
+    rollupOptions: {
+      input: resolve(__dirname, 'index.html'),
+    },
   },
 })
