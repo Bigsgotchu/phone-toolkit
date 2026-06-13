@@ -47,15 +47,15 @@ jobs:
       run: npm ci
 
     - name: Build desktop
-      run: npm run build --workspace desktop
+      run: cd apps/desktop && npm run build
 
     - name: Package
-      run: npm run package:win --workspace desktop
+      run: cd apps/desktop && npm run package:win
 
     - name: Generate SHA256 checksums
       run: |
-        cd apps/desktop/release
-        Get-ChildItem *.exe | Get-FileHash -Algorithm SHA256 | Format-List | Out-File SHA256SUMS.txt
+        cd apps/desktop
+        Get-ChildItem release/*.exe | Get-FileHash -Algorithm SHA256 | Format-List | Out-File release/SHA256SUMS.txt
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
