@@ -17,6 +17,4 @@ apps/desktop/dist/
 apps/desktop/electron-builder.json
 apps/desktop/electron-main.js
 apps/desktop/electron.json
-apps/desktop/index.html
 apps/desktop/resources/
-apps/desktop/release/
