@@ -24,7 +24,7 @@ jobs:
       run: npm ci
 
     - name: Type check desktop
-      run: npx tsc --noEmit -p apps/desktop/tsconfig.main.json
+      run: npx tsc --noEmit -p apps/desktop/tsconfig.main.json --ignoreDeprecations 6.0
 
     - name: Run tests
       run: |
