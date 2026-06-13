@@ -4,21 +4,21 @@ import { resolve } from "path";
 
 export default defineConfig({
   base: "./",
-  root: process.cwd(),
+  root: __dirname,
   plugins: [react()],
   resolve: {
     alias: {
-      "@": resolve(process.cwd(), "src"),
+      "@": resolve(__dirname, "src"),
     },
   },
   server: {
     port: 5173,
   },
   build: {
-    outDir: resolve(process.cwd(), "dist/renderer"),
+    outDir: resolve(__dirname, "dist/renderer"),
     emptyOutDir: true,
     rollupOptions: {
-      input: resolve(process.cwd(), "index.html"),
+      input: resolve(__dirname, "index.html"),
     },
   },
 });
