@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phone Toolkit - Android Device Management</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    header { background: #1a1a2e; color: white; padding: 20px 0; }
+    header h1 { font-size: 2rem; font-weight: 600; }
+    .hero { background: linear-gradient(135deg, #16213e 0%, #0f3460 100%); color: white; padding: 80px 0; text-align: center; }
+    .hero h2 { font-size: 3rem; margin-bottom: 20px; }
+    .hero p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 30px; }
+    .btn { display: inline-block; background: #e94560; color: white; padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: 600; margin: 10px; }
+    .btn:hover { background: #ff6b6b; }
+    .features { padding: 80px 0; background: #f8f9fa; }
+    .features .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+    .feature { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .feature h3 { color: #0f3460; margin-bottom: 15px; }
+    .pricing { padding: 80px 0; }
+    .pricing .plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+    .plan { border: 2px solid #eee; border-radius: 10px; padding: 30px; text-align: center; }
+    .plan.popular { border-color: #e94560; position: relative; }
+    .plan.popular::before { content: 'Most Popular'; position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: #e94560; color: white; padding: 5px 20px; border-radius: 20px; font-size: 0.8rem; }
+    .plan h3 { font-size: 1.5rem; margin-bottom: 10px; }
+    .plan .price { font-size: 2rem; font-weight: bold; color: #0f3460; margin: 20px 0; }
+    .plan ul { text-align: left; margin-bottom: 20px; }
+    .plan li { padding: 5px 0; border-bottom: 1px solid #eee; }
+    footer { background: #1a1a2e; color: white; padding: 40px 0; text-align: center; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>📱 Phone Toolkit</h1>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h2>Android Device Management Made Simple</h2>
+      <p>The complete toolkit for Android device backup, restore, and management. Perfect for repair shops, IT departments, and power users.</p>
+      <a href="#pricing" class="btn">Get Started</a>
+      <a href="https://github.com/yourusername/phone-toolkit/releases/latest" class="btn" style="background: transparent; border: 2px solid white;">Download Now</a>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="container">
+      <div class="grid">
+        <div class="feature">
+          <h3>📦 Backup & Restore</h3>
+          <p>Create complete backups of your Android devices with a single click. Restore anytime, anywhere.</p>
+        </div>
+        <div class="feature">
+          <h3>🔧 FRP Bypass</h3>
+          <p>Remotely bypass Factory Reset Protection on locked devices. Multiple methods supported.</p>
+        </div>
+        <div class="feature">
+          <h3>📊 Device Analytics</h3>
+          <p>Get detailed device information, battery health, storage status, and performance metrics.</p>
+        </div>
+        <div class="feature">
+          <h3>🔒 Secure & Private</h3>
+          <p>Your data stays local. No cloud uploads. End-to-end encrypted communication.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 40px;">Simple Pricing</h2>
+      <div class="plans">
+        <div class="plan">
+          <h3>One Tool</h3>
+          <div class="price">$19.99</div>
+          <ul>
+            <li>✓ Single device activation</li>
+            <li>✓ Backup & Restore</li>
+            <li>✓ FRP Bypass</li>
+            <li>✓ 1 year updates</li>
+          </ul>
+          <button class="btn" onclick="purchase('one-tool')">Buy Now</button>
+        </div>
+        <div class="plan popular">
+          <h3>Pro Monthly</h3>
+          <div class="price">$9.99/mo</div>
+          <ul>
+            <li>✓ Up to 3 devices</li>
+            <li>✓ Backup & Restore</li>
+            <li>✓ FRP Bypass</li>
+            <li>✓ Priority support</li>
+            <li>✓ All updates included</li>
+          </ul>
+          <button class="btn" onclick="purchase('pro-monthly')">Get Started</button>
+        </div>
+        <div class="plan">
+          <h3>Team</h3>
+          <div class="price">$29.99/mo</div>
+          <ul>
+            <li>✓ Up to 10 devices</li>
+            <li>✓ All Pro features</li>
+            <li>✓ Team collaboration</li>
+            <li>✓ API access</li>
+            <li>✓ Dedicated support</li>
+          </ul>
+          <button class="btn" onclick="purchase('team')">Get Started</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Phone Toolkit. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function purchase(plan) {
+      window.location.href = 'https://api.phonetoolkit.app/license/create-checkout-session?plan=' + plan;
+    }
+  </script>
+</body>
+</html>

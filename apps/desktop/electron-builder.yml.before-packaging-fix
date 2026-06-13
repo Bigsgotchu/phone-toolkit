@@ -1,0 +1,52 @@
+appId: com.phonetoolkit.desktop
+productName: Phone Toolkit
+
+directories:
+  output: release
+  buildResources: build
+
+files:
+  - dist/main/**/*.js
+  - dist/preload/**/*.js
+  - dist/renderer/**/*
+  - package.json
+
+asar: false
+
+electronVersion: 28.3.3
+
+mac:
+  icon: build/icon.icns
+  category: public.app-category.utilities
+  target:
+    - target: dmg
+      arch:
+        - arm64
+        - x64
+  hardenedRuntime: true
+  gatekeeperAssess: false
+  entitlements: build/entitlements.mac.plist
+  entitlementsInherit: build/entitlements.mac.plist
+  notarize: false
+  identity: null
+
+dmg:
+  sign: false
+
+win:
+  icon: build/icon.ico
+  asar: false
+  target:
+    - target: nsis
+      arch:
+        - x64
+  sign: false
+
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: Phone Toolkit
+
+publish: null

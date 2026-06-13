@@ -216,7 +216,6 @@ function registerIPCHandlers() {
     const adb = new AdbService();
     const info = await adb.getModel(serial);
     const version = parseInt(info.apiLevel) || 0;
-    const patch = await adb.getSecurityPatch(serial);
 
     const vulnerabilityScore = version <= 21 ? 0.8 : version <= 26 ? 0.7 : version <= 29 ? 0.5 : 0.3;
     const recommendedMethods = version >= 33

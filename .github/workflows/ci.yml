@@ -1,0 +1,68 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Type check backend
+      run: npx tsc --noEmit -p apps/backend/tsconfig.json
+
+    - name: Type check desktop
+      run: npx tsc --noEmit -p apps/desktop/tsconfig.main.json
+
+    - name: Run tests
+      run: |
+        echo "No tests configured yet"
+
+  package:
+    needs: build
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build desktop
+      run: npm run build --workspace desktop
+
+    - name: Package
+      run: npm run package:win --workspace desktop
+
+    - name: Generate SHA256 checksums
+      run: |
+        cd apps/desktop/release
+        Get-ChildItem *.exe | Get-FileHash -Algorithm SHA256 | Format-List | Out-File SHA256SUMS.txt
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: phone-toolkit-installer
+        path: |
+          apps/desktop/release/*.exe
+          apps/desktop/release/SHA256SUMS.txt

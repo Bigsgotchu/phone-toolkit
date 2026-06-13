@@ -1,0 +1,38 @@
+{
+  "name": "phone-toolkit-monorepo",
+  "version": "1.0.0",
+  "description": "Phone Toolkit - Desktop and Backend for Android device management",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "dev:desktop": "npm run dev --workspace=apps/desktop",
+    "dev:backend": "npm run dev --workspace=apps/backend",
+    "test": "npm run test --workspaces",
+    "lint": "npm run lint --workspaces",
+    "test:e2e": "playwright test",
+    "test:e2e:api": "npm run start:backend:detached && sleep 3 && playwright test --project=api",
+    "test:e2e:renderer": "npm run start:backend:detached && npm run start:vite:detached && sleep 5 && playwright test --project=renderer",
+    "test:e2e:electron": "playwright test --project=electron",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:ui": "playwright test --ui",
+    "start:backend": "npm run dev --workspace=apps/backend",
+    "start:backend:detached": "npm run start:backend --workspace=apps/backend &",
+    "start:vite": "npm run dev:vite --workspace=apps/desktop",
+    "start:vite:detached": "npm run start:vite --workspace=apps/desktop &"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.60.0",
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
+    "eslint": "^10.4.1",
+    "globals": "^17.6.0",
+    "playwright": "^1.60.0",
+    "typescript-eslint": "^8.61.0",
+    "wait-on": "^9.0.10"
+  }
+}

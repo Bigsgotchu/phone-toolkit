@@ -1,47 +1,31 @@
 appId: com.phonetoolkit.desktop
 productName: Phone Toolkit
+electronVersion: 28.3.3
 
 directories:
   output: release
   buildResources: build
 
 files:
-  - dist/**/*
   - dist/main/**/*
   - dist/preload/**/*
+  - dist/renderer/**/*
   - package.json
 
 asar: true
 
 artifactName: "${productName}-${version}-${os}-${arch}.${ext}"
 
-electronVersion: 28.3.3
-
-mac:
-  icon: build/icon.icns
-  category: public.app-category.utilities
-  target:
-    - target: dmg
-      arch:
-        - arm64
-        - x64
-  hardenedRuntime: true
-  gatekeeperAssess: false
-  entitlements: build/entitlements.mac.plist
-  entitlementsInherit: build/entitlements.mac.plist
-  notarize: false
-  identity: null
-
-dmg:
-  sign: false
+env:
+  API_BASE_URL: https://api.phonetoolkit.app
 
 win:
   icon: build/icon.ico
+  sign: false
   target:
     - target: nsis
       arch:
         - x64
-  sign: false
 
 nsis:
   oneClick: false
@@ -49,5 +33,13 @@ nsis:
   createDesktopShortcut: true
   createStartMenuShortcut: true
   shortcutName: Phone Toolkit
+
+mac:
+  icon: build/icon.icns
+  identity: null
+  notarize: false
+  hardenedRuntime: true
+  entitlements: build/entitlements.mac.plist
+  entitlementsInherit: build/entitlements.mac.plist
 
 publish: null
