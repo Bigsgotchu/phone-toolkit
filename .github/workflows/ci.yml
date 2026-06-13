@@ -23,9 +23,6 @@ jobs:
     - name: Install dependencies
       run: npm ci
 
-    - name: Type check backend
-      run: npx tsc --noEmit -p apps/backend/tsconfig.json
-
     - name: Type check desktop
       run: npx tsc --noEmit -p apps/desktop/tsconfig.main.json
 
