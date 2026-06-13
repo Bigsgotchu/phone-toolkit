@@ -16,9 +16,6 @@ asar: true
 
 artifactName: "${productName}-${version}-${os}-${arch}.${ext}"
 
-env:
-  API_BASE_URL: https://api.phonetoolkit.app
-
 win:
   icon: build/icon.ico
   sign: false
