@@ -9,7 +9,7 @@
     "start:vite": "vite",
     "dev:main": "tsc -p tsconfig.main.json --watch",
     "dev:electron": "node ../../scripts/run-electron.cjs .",
-    "build": "tsc -p tsconfig.main.json && tsc -p tsconfig.preload.json && vite build --config vite.config.js",
+    "build": "tsc -p tsconfig.main.json && tsc -p tsconfig.preload.json && vite build",
     "preview": "vite preview",
     "package": "electron-builder",
     "package:dev": "npm run build && cross-env CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --dir",

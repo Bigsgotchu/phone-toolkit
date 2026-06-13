@@ -1,12 +1,16 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { dirname, resolve } from 'node:path'
+
+const configFile = fileURLToPath(import.meta.url)
+const appRoot = dirname(configFile)
 
 export default defineConfig({
-  root: resolve(__dirname),
+  root: appRoot,
   plugins: [react()],
   build: {
-    outDir: resolve(__dirname, 'dist/renderer'),
+    outDir: resolve(appRoot, 'dist/renderer'),
     emptyOutDir: false,
   },
 })
