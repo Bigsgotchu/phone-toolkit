@@ -49,6 +49,20 @@ jobs:
     - name: Install dependencies
       run: npm ci
 
+    - name: Debug desktop files
+      working-directory: apps/desktop
+      run: |
+        echo "Current directory:"
+        pwd
+        echo "Files in apps/desktop:"
+        dir
+        echo "Files in src/renderer:"
+        dir src\renderer
+        echo "vite.config.js content:"
+        type vite.config.js
+        echo "package.json scripts:"
+        type package.json | findstr scripts
+
     - name: Build desktop
       run: npm run build --workspace desktop
 
