@@ -66,8 +66,10 @@ jobs:
     - name: Build desktop
       run: npm run build --workspace desktop
 
-    - name: Package
-      run: npm run package:win --workspace desktop
+- name: Package Windows
+       env:
+         CSC_IDENTITY_AUTO_DISCOVERY: "false"
+       run: npm run package:win --workspace desktop
 
     - name: Generate SHA256 checksums
       run: |
