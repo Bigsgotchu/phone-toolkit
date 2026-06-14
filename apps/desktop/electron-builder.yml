@@ -19,9 +19,6 @@ artifactName: "${productName}-${version}-${os}-${arch}.${ext}"
 win:
   icon: build/icon.ico
   sign: false
-  signingHashAlgorithm: ''
-  certificateFile: false
-  certificatePassword: false
   target:
     - target: nsis
       arch:
