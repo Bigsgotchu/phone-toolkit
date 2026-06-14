@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "Phone Toolkit Desktop App",
   "main": "dist/main/index.js",
+  "homepage": "https://github.com/Bigsgotchu/phone-toolkit",
+  "author": {
+    "name": "Phone Toolkit",
+    "email": "support@phonetoolkit.com"
+  },
   "scripts": {
     "dev": "concurrently \"npm run dev:vite\" \"npm run dev:main\"",
     "dev:vite": "vite",
